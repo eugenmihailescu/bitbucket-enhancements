@@ -1,0 +1,293 @@
+:root {
+  --alert-background: #f0f0f0;
+  --alert-color: #333;
+  --progress: 0;
+  --progress-color: rgb(3, 133, 255);
+  --progress-background: rgb(242, 242, 242);
+}
+
+/* Your general styles go here */
+body {
+  font-family: "Arial", sans-serif;
+}
+
+button.bb-enhancements-toolbar {
+  display: flex;
+}
+
+div.bb-enhancements-toolbar {
+  display: flex;
+}
+
+@media (max-width: 575.98px) {
+  div.bb-enhancements-toolbar {
+    display: block;
+  }
+}
+
+button.bb-enhancements-button {
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  margin: 0.25rem;
+}
+
+button.bb-enhancements-button:not(:disabled),
+.bb-enhancements-modal-button:not(:disabled) {
+  cursor: pointer;
+
+  filter: brightness(0.75); /* Decrease brightness */
+}
+
+button.bb-enhancements-button:hover,
+.bb-enhancements-modal-button:hover {
+  filter: brightness(1.25); /* Increase brightness */
+}
+
+button.bb-enhancements-button:disabled,
+.bb-enhancements-modal-button:disabled {
+  background-color: darkgray;
+  border-color: black;
+  color: white;
+  filter: brightness(0.85); /* Decrease brightness */
+  cursor: not-allowed;
+}
+
+button.bb-enhancements-delete:not(:disabled),
+.bb-enhancements-modal-button.btn-delete:not(:disabled) {
+  background-color: red;
+  color: white;
+  border-color: darkred;
+}
+button.bb-enhancements-spam:not(:disabled),
+.bb-enhancements-modal-button.btn-spam:not(:disabled) {
+  background-color: orange;
+  color: black;
+  border-color: darkorange;
+}
+
+.centered-alert {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 15px;
+  background-color: var(--alert-background);
+  color: var(--alert-color);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: none;
+  z-index: 10000;
+}
+
+.centered-alert span.btn-close {
+  position: absolute;
+  top: 0;
+  right: 0.25rem;
+  font-size: 1.25rem;
+  color: var(--alert-color);
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.centered-alert span.btn-close:hover {
+  opacity: 1;
+}
+
+.hidden-row {
+  display: none;
+}
+
+div.bb-enhancements-input-filter-wrapper {
+  display: flex;
+  width: 100%;
+}
+
+div.bb-enhancements-input-filter-wrapper > input[type="search"] {
+  width: 100%;
+}
+
+div.bb-enhancements-input-filter-wrapper > button {
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.bb-enhancements-loader-container {
+  display: flex;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: wait;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Greyish transparent backdrop */
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* Ensure the loader is on top */
+}
+
+/* Indeterminate spinning progress */
+.bb-enhancements-loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: bb-enhancements-spin 1s linear infinite;
+}
+
+@keyframes bb-enhancements-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Determinated ring progress */
+.bb-enhancements-progress-outer {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  background: conic-gradient(
+    var(--progress-color) var(--progress),
+    var(--progress-background) var(--progress)
+  );
+}
+
+.bb-enhancements-progress-inner {
+  position: absolute;
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  background-color: var(--progress-background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: medium;
+  font-weight: bold;
+}
+
+.bb-enhancements-progress-inner:hover::before,
+.bb-enhancements-progress-inner:hover::after {
+  font-size: 0.75rem;
+  font-weight: normal;
+  position: absolute;
+  color: var(--progress-background);
+  filter: brightness(0.5); /* Decrease brightness */
+}
+
+.bb-enhancements-progress-inner:hover::before {
+  content: "page: " attr(data-page) "/" attr(data-pagecount);
+  top: 0.5rem;
+}
+
+.bb-enhancements-progress-inner:hover::after {
+  content: "eta: " attr(data-eta) "s";
+  bottom: 0.5rem;
+}
+
+/* MODAL */
+.bb-enhancements-modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 50%;
+  max-width: 75%;
+  max-height: 75%;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  z-index: 9999;
+  overflow: auto;
+}
+.bb-enhancements-modal-header {
+  position: sticky;
+  top: 0;
+  padding: 1rem;
+  background-color: white;
+  border-bottom: 1px;
+}
+.bb-enhancements-modal-title {
+  font-size: 1.5rem;
+  font-weight: bolder;
+  text-transform: uppercase;
+}
+.bb-enhancements-modal-title-close {
+  float: right;
+  right: 0.5rem;
+  color: lightgray;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.bb-enhancements-modal-title-close:hover {
+  color: darkgray;
+  font-weight: 900;
+}
+.bb-enhancements-modal-body {
+  padding: 1rem;
+  height: 100%;
+}
+.bb-enhancements-thead {
+  font-weight: bolder;
+  text-transform: capitalize;
+}
+.bb-enhancements-row:hover {
+  background-color: lightgray;
+}
+.bb-enhancements-modal-footer {
+  position: sticky;
+  bottom: 0;
+  padding: 1rem;
+  background-color: white;
+  border-top: 1px;
+}
+.bb-enhancements-modal-button {
+  background-color: darkgray;
+  color: white;
+
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+  padding: 0.25rem;
+  border: 1px solid lightgray;
+  border-radius: 0.25rem;
+  min-width: 4rem;
+}
+
+.bb-enhancements-modal-header,
+.bb-enhancements-modal-footer {
+  border-style: solid;
+  border-image: linear-gradient(90deg, #e9ecef, #adb5bd, #e9ecef) 1;
+}
+
+.bb-enhancements-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+}
+
+.bb-enhancements-modal-title {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+/* TABLE */
+.bb-enhancements-thead {
+  display: flex;
+}
+.bb-enhancements-row {
+  display: flex;
+  line-height: 1.25rem;
+}

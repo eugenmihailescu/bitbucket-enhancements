@@ -1,0 +1,47 @@
+{
+    "manifest_version": 2,
+    "name": "Bitbucket Enhancements",
+    "version": "1.0",
+    "description": "Enhancements for Bitbucket",
+    "icons": {
+        "16": "icons/bitbucket-enhancements16.png",
+        "48": "icons/bitbucket-enhancements48.png",
+        "128": "icons/bitbucket-enhancements128.png"
+    },
+    "permissions": [
+        "activeTab",
+        "storage",
+        "webRequest",
+        "webRequestBlocking",
+        "<all_urls>"
+    ],
+    "browser_action": {
+        "default_icon": {
+            "16": "icons/bitbucket-enhancements16.png",
+            "48": "icons/bitbucket-enhancements48.png",
+            "128": "icons/bitbucket-enhancements128.png"
+        },
+        "default_popup": "options.html",
+        "default_title": "Click to open"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://bitbucket.org/*/issues*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "css": [
+                "content.css"
+            ],
+            "run_at": "document_start"
+        }
+    ],
+    "background": {
+        "scripts": [
+            "background.js"
+        ]
+    },
+    "options_page": "options.html"
+}

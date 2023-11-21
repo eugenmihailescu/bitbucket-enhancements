@@ -1,0 +1,41 @@
+/* Your options styles go here */
+body {
+  font-family: "Arial", sans-serif;
+}
+
+.input-row {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 1rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.input-row > div:first-child {
+  min-width: 5rem;
+}
+.input-row > div:last-child {
+  width: 100%;
+}
+
+.input-row input {
+  min-width: 20rem;
+}
+
+.alert {
+  padding: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border: 1px solid #cccccc;
+  border-radius: 0.3rem;
+  padding: 0.5rem;
+}
+
+.alert-warning {
+  background-color: #ffc10736;
+}
+
+.d-none {
+  display: none;
+}

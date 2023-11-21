@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<html>
+  <head>
+    <title>Options</title>
+  </head>
+  <body>
+    <div class="alert alert-warning">
+      To be able to run some actions (eg. Delete, SPAM) on your Bitbucket
+      repository issues the extension uses
+      <a
+        href="https://developer.atlassian.com/cloud/bitbucket/rest/api-group-issue-tracker/#api-group-issue-tracker"
+        >Bitbucket APIs</a
+      >, therefore it needs to
+      <a
+        href="https://developer.atlassian.com/cloud/bitbucket/rest/intro/#basic-auth"
+        >authenticate the Bitbucket API</a
+      >.
+    </div>
+    <div>
+      <div class="input-row">
+        <div>
+          <label for="bb_username">Username</label>
+        </div>
+        <div>
+          <input id="bb_username" placeholder="Your Bitbucket username" />
+        </div>
+      </div>
+      <div class="input-row">
+        <div>
+          <label for="bb_app_password">App password</label>
+        </div>
+        <div>
+          <input
+            id="bb_app_password"
+            placeholder="Your Bitbucket app password"
+          />
+        </div>
+      </div>
+      <div>
+        <input type="button" id="save_options" class="save" value="Save" />
+      </div>
+    </div>
+
+    <script src="options.js"></script>
+  </body>
+</html>
