@@ -22,7 +22,7 @@
             "128": "icons/bitbucket-enhancements128.png"
         },
         "default_popup": "options.html",
-        "default_title": "Click to open"
+        "default_title": "Bitbucket enhancements"
     },
     "content_scripts": [
         {
